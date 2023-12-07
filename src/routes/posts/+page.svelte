@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PostsList from "../../components/PostsList.svelte";
+  import { postsStore } from "$lib/stores/post-store";
 
 	// your script goes here
 	let newTitle = '';
@@ -9,6 +10,7 @@
   function addToList() {
     console.log("=====", { newTitle, newDetails })
     postList = [...postList, { title: newTitle, details: newDetails }]
+    postsStore.addNewPost(newTitle, newDetails);
     newTitle = ""
     newDetails = ""
   }
@@ -68,9 +70,11 @@
   </form>
 
   <aside class="w-1/2 flex flex-col">
+    <!-- rendering from app state -->
     <PostsList posts={postList} heading="Posts from component state"/>
     <div class="border-solid border-4 border-gray-600 mt-2 mb-3" />
-    <PostsList posts={[]} heading="Posts from Svelte store"/>
+    <!-- rendering from store -->
+    <PostsList posts={$postsStore} heading="Posts from Svelte store"/>
   </aside>
 </div>
 
