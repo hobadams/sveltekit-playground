@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { SlideToggle } from '@skeletonlabs/skeleton';
 
+	// TODO cookies could but moved out of the component
 	const setCookie = (value: string) => {
 		const d = new Date();
 		d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
@@ -31,14 +32,22 @@
 
 	let changeTheme = () => {
 		darkTheme = !!darkTheme;
-
-		console.log({ darkTheme });
 		setCookie(darkTheme ? '1' : '0');
+		if (darkTheme) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
 	};
 
 	onMount(() => {
 		cookie = getCookie();
 		darkTheme = cookie && cookie === '1' ? true : false;
+		if (darkTheme) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
 		loaded = true;
 	});
 </script>

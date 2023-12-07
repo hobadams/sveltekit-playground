@@ -14,7 +14,7 @@
 </script>
 
 <QueryClientProvider client={queryClient}>
-	<section class="bg-primary">
+	<section>
 		<slot />
 		<ThemeSwitcher />
 	</section>
