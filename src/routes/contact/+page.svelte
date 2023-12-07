@@ -6,7 +6,7 @@
 	import { z } from 'zod';
 
 	const formSchema = z.object({
-		subject: z.string().min(1)
+		subject: z.string().min(1),
 		firstName: z.string().min(1),
 		lastName: z.string().min(1),
 		email: z.string().email().min(1)
