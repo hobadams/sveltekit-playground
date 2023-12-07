@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { browser } from '$app/environment';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import ThemeSwitcher from '$components/ThemeSwitcher.svelte';
 	import NavBar from '$components/NavBar.svelte';
 
 	const queryClient = new QueryClient({
@@ -14,8 +15,9 @@
 </script>
 
 <QueryClientProvider client={queryClient}>
-	<section class="bg-primary">
-    <NavBar />
+	<section>
+		<NavBar />
 		<slot />
+		<ThemeSwitcher />
 	</section>
 </QueryClientProvider>
