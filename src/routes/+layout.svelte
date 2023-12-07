@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { browser } from '$app/environment';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import ThemeSwitcher from '$components/ThemeSwitcher.svelte';
 
 	const queryClient = new QueryClient({
 		defaultOptions: {
@@ -15,5 +16,6 @@
 <QueryClientProvider client={queryClient}>
 	<section class="bg-primary">
 		<slot />
+		<ThemeSwitcher />
 	</section>
 </QueryClientProvider>
