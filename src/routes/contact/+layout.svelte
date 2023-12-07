@@ -3,6 +3,6 @@
 </script>
 
 <section class="bg-gray-200 p-4 min-h-screen">
-	<p>{$t('common.contact.title')}</p>
+	<h1 class="text-xl font-bold mb-4">{$t('common.contact.title')}</h1>
 	<slot />
 </section>
