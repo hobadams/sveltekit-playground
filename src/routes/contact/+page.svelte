@@ -1,18 +1,22 @@
 <script lang="ts">
-	import { superForm } from 'sveltekit-superforms/client';
+	import { enhance } from '$app/forms';
+	import { superForm, superValidateSync } from 'sveltekit-superforms/client';
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 	import { z } from 'zod';
 
-	const data = {
-		firstName: '',
-		lastName: '',
-		email: ''
-	};
+	const formSchema = z.object({
+		firstName: z.string().min(1),
+		lastName: z.string().min(1),
+		email: z.string().email().min(1)
+	});
 
-	const { form, errors } = superForm(data);
+	const data = superValidateSync(formSchema);
+	const { form, errors, validate } = superForm(data);
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
+		const test = await validate('firstName');
 		console.log($form);
+		console.log({ test });
 	};
 </script>
 
@@ -33,7 +37,7 @@
 				aria-invalid={$errors.firstName ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.firstName}<span class="invalid">{$errors.firstName}</span>{/if}
+			{#if $errors.firstName}<span class="text-red">First name required</span>{/if}
 		</div>
 
 		<div class="mb-4">
@@ -45,7 +49,7 @@
 				aria-invalid={$errors.lastName ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.lastName}<span class="invalid">{$errors.lastName}</span>{/if}
+			{#if $errors.lastName}<span class="text-red">{$errors.lastName}</span>{/if}
 		</div>
 
 		<div class="mb-4">
@@ -57,7 +61,7 @@
 				aria-invalid={$errors.email ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
+			{#if $errors.email}<span class="text-red">{$errors.email}</span>{/if}
 		</div>
 
 		<button
