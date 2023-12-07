@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Post as PostType } from '../../types/post';
-	import Post from '../../components/Post.svelte';
+	import type { Post as PostType } from '$types/post';
+	import Post from '$components/Post.svelte';
 
 	let posts: PostType[] = [];
 	onMount(async () => {

@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { PageLoad } from './$types';
-
-	export const load: PageLoad = async () => {
-		const posts = await getPosts();
-		return { posts };
-	};
+	import Posts from '$components/Posts.svelte';
 </script>
+
+<h1>Basic Query with SSR</h1>
+<Posts />
