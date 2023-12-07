@@ -37,6 +37,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.18.4",
+		"@auth/sveltekit": "^0.3.15",
 		"@tanstack/svelte-query": "^5.13.2"
 	}
 }
