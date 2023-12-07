@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createQuery } from '@tanstack/svelte-query';
 	import { api } from '$lib/api';
-	import Post from './Post.svelte';
+	import Post from './BlogPost.svelte';
 	import { derived, writable } from 'svelte/store';
 
 	let limit = writable(10);

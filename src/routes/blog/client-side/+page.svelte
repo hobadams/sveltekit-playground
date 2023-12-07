@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Post as PostType } from '$types/post';
-	import Post from '$components/Post.svelte';
+	import type { BlogPost as BlogPostType } from '$types/blogPost';
+	import BlogPost from '$components/BlogPost.svelte';
 
-	let posts: PostType[] = [];
+	let posts: BlogPostType[] = [];
 	onMount(async () => {
 		const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
 		posts = await res.json();
@@ -14,7 +14,7 @@
 <ul class="max-w-[500px]">
 	{#each posts as post}
 		<li class="mb-4">
-			<Post {post} />
+			<BlogPost {post} />
 		</li>
 	{/each}
 </ul>
