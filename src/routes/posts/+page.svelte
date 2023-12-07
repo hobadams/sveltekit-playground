@@ -17,6 +17,7 @@
 </script>
 
 <div class="flex w-full gap-8">
+  <a href="/" class="text-sky-400">Home</a>
   <form class="w-1/2" on:submit|preventDefault={addToList}>
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-1/3">
