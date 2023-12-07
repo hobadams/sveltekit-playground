@@ -1,15 +1,19 @@
-<script>
-	import Input from './Input.svelte';
-	import Button from './Button.svelte';
-	import Modal from './Modal.svelte';
+<script lang="ts">
+	import { superForm } from 'sveltekit-superforms/client';
+	import { string } from 'zod';
+
+	export let data: PageData;
+
+	// Client API:
+	const { form } = superForm(data.form);
 </script>
 
-<form>
-	<Input />
-	<Button />
-	<Modal>
-		<h1 slot="header">header</h1>
-		<p>this is body content</p>
-		<footer slot="footer">footer</footer>
-	</Modal>
+<form method="POST">
+	<label for="name">Name</label>
+	<input type="text" name="name" bind:value={$form.name} />
+
+	<label for="email">E-mail</label>
+	<input type="email" name="email" bind:value={$form.email} />
+
+	<div><button>Submit</button></div>
 </form>
