@@ -4,28 +4,9 @@
 	import { z } from 'zod';
 
 	const formSchema = z.object({
-		firstName: z
-			.string()
-			.min(1)
-			.refine((firstName) => firstName.length < 1, {
-				message: 'First name is required',
-				path: ['firstName']
-			}),
-		lastName: z
-			.string()
-			.min(1)
-			.refine((lastName) => lastName.length < 1, {
-				message: 'Last name is required',
-				path: ['lastName']
-			}),
-		email: z
-			.string()
-			.email()
-			.min(1)
-			.refine((email) => email.length < 1, {
-				message: 'Email is required',
-				path: ['email']
-			})
+		firstName: z.string().min(1),
+		lastName: z.string().min(1),
+		email: z.string().email().min(1)
 	});
 
 	const data = superValidateSync(formSchema);
@@ -57,7 +38,7 @@
 				aria-invalid={$errors.firstName ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.firstName}<span class="text-red">{$errors.firstName}</span>{/if}
+			{#if $errors.firstName}<span class="text-red">First name is not valid</span>{/if}
 		</div>
 
 		<div class="mb-4">
@@ -69,7 +50,7 @@
 				aria-invalid={$errors.lastName ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.lastName}<span class="text-red">{$errors.lastName}</span>{/if}
+			{#if $errors.lastName}<span class="text-red">Last name is not valid</span>{/if}
 		</div>
 
 		<div class="mb-4">
@@ -81,7 +62,7 @@
 				aria-invalid={$errors.email ? 'true' : undefined}
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
-			{#if $errors.email}<span class="text-red">{$errors.email}</span>{/if}
+			{#if $errors.email}<span class="text-red">Email is not valid</span>{/if}
 		</div>
 
 		<button
