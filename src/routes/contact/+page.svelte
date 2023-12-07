@@ -46,7 +46,7 @@
 				>
 					<option value="">Please Select</option>
 					{#each $query.data as subject}
-						<option value={subject.id}>
+						<option value={subject.title}>
 							{subject.title}
 						</option>
 					{/each}
