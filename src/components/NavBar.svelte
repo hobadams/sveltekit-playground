@@ -1,5 +1,6 @@
 <script>
 	import SvelteLogo from '$lib/assets/svelte-logo.svg';
+	import ThemeSwitcher from './ThemeSwitcher.svelte';
 </script>
 
 <header>
@@ -8,17 +9,20 @@
 	>
 		<a href="/"><img src={SvelteLogo} alt="Logo" class="h-8 w-8" /></a>
 
-		<ul class="flex list-none space-x-8">
-			<li>
-				<a href="/posts" class="text-text hover:text-blue-400">Posts</a>
-			</li>
-			<li>
-				<a href="/blog" class="text-text hover:text-blue-400">Blog</a>
-			</li>
-			<li>
-				<a href="/contact" class="text-text hover:text-blue-400">Contact</a>
-			</li>
-		</ul>
+		<div class="flex items-center">
+			<ul class="flex list-none space-x-8 mr-4 border-r pr-4">
+				<li>
+					<a href="/posts" class="text-text hover:text-blue-400">Posts</a>
+				</li>
+				<li>
+					<a href="/blog" class="text-text hover:text-blue-400">Blog</a>
+				</li>
+				<li>
+					<a href="/contact" class="text-text hover:text-blue-400">Contact</a>
+				</li>
+			</ul>
+			<ThemeSwitcher />
+		</div>
 	</nav>
 </header>
 
